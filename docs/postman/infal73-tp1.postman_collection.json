@@ -1,0 +1,125 @@
+{
+  "info": {
+    "name": "infal73-tp1",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "host",
+      "value": "http://127.0.0.1:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Lister",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/api/orders",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Lire",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/api/orders/ORD-101",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "ORD-101"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Créer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Idempotency-Key",
+            "value": "demo-001"
+          }
+        ],
+        "url": {
+          "raw": "{{host}}/api/orders",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "orders"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"customerId\":\"C102\",\"items\":[{\"productId\":\"P12\",\"quantity\":2}]}"
+        }
+      }
+    },
+    {
+      "name": "Confirmer",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": {
+          "raw": "{{host}}/api/orders/ORD-101",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "ORD-101"
+          ]
+        },
+        "body": {
+          "mode": "raw",
+          "raw": "{\"status\":\"CONFIRMED\"}"
+        }
+      }
+    },
+    {
+      "name": "Annuler",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{host}}/api/orders/ORD-102/cancellations",
+          "host": [
+            "{{host}}"
+          ],
+          "path": [
+            "api",
+            "orders",
+            "ORD-102",
+            "cancellations"
+          ]
+        }
+      }
+    }
+  ]
+}
